@@ -9,8 +9,8 @@ function Footer() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="mt-8 flex justify-center bg-green-900 text-white">
-        <div className="container flex flex-col items-center py-8">
+      <div className="mt-0 flex justify-center bg-green-900 text-white">
+        <div className="container flex flex-col items-center py-4 gap-4">
           <p className="text-xl font-bold">
             Blog Pessoal Generation | Copyright: {data}
           </p>
