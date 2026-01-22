@@ -7,10 +7,7 @@ interface CardPostagensProps {
 
 function CardPostagem({ postagem }: CardPostagensProps) {
   return (
-    <div
-      className="border-slate-900 border 
-            flex flex-col rounded overflow-hidden justify-between"
-    >
+    <div className="border-slate-900 border flex flex-col rounded overflow-hidden justify-between">
       <div>
         <div className="flex w-full bg-indigo-400 py-2 px-4 items-center gap-4">
           <img
@@ -37,16 +34,14 @@ function CardPostagem({ postagem }: CardPostagensProps) {
       </div>
       <div className="flex">
         <Link
-          to=""
-          className="w-full text-white bg-indigo-400 
-                    hover:bg-indigo-800 flex items-center justify-center py-2"
+          to={`/editarpostagem/${postagem.id}`}
+          className="w-full text-white bg-indigo-400 hover:bg-indigo-800 flex items-center justify-center py-2"
         >
           <button>Editar</button>
         </Link>
         <Link
           to=""
-          className="text-white bg-red-400 
-                    hover:bg-red-700 w-full flex items-center justify-center"
+          className="text-white bg-red-400 hover:bg-red-700 w-full flex items-center justify-center"
         >
           <button>Deletar</button>
         </Link>
