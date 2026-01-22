@@ -74,7 +74,7 @@ function DeletarTema() {
           Tema
         </header>
 
-        <p className="p-8 text-2xl bg-gray-100 text-center min-h-[100px] flex items-center justify-center">
+        <p className="p-8 text-2xl bg-gray-100 text-center min-h-25 flex items-center justify-center">
           {tema.descricao || "Carregando..."}
         </p>
 
