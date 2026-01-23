@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
+import { buscar, deletar } from "../../../services/Service";
 
 interface Tema {
   id: number;
@@ -30,11 +30,9 @@ function DeletarTema() {
 
   async function carregarTema() {
     try {
-      const response = await axios.get(
-        `https://blogpessoal-nest-zcc0.onrender.com/temas/${id}`,
-        { headers: { Authorization: token } },
-      );
-      setTema(response.data);
+      await buscar(`/temas/${id}`, setTema, {
+        headers: { Authorization: token },
+      });
     } catch (error: any) {
       if (error.response?.status === 401) handleLogout();
     }
@@ -46,10 +44,9 @@ function DeletarTema() {
     setIsLoading(true);
 
     try {
-      await axios.delete(
-        `https://blogpessoal-nest-zcc0.onrender.com/temas/${id}`,
-        { headers: { Authorization: token } },
-      );
+      await deletar(`/temas/${id}`, {
+        headers: { Authorization: token },
+      });
 
       alert("Tema excluído com sucesso!");
       navigate("/temas");

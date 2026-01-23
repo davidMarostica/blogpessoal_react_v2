@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://blogpessoal-nest-zcc0.onrender.com",
+  baseURL: "https://blogpessoal-nest-moew.onrender.com",
 });
 
 export const cadastrarUsuario = async (
@@ -26,6 +26,7 @@ export const buscar = async (
   const resposta = await api.get(url, header);
   setDados(resposta.data);
 };
+
 export const cadastrar = async (
   url: string,
   dados: Object,
@@ -45,6 +46,7 @@ export const atualizar = async (
   const resposta = await api.put(url, dados, header);
   setDados(resposta.data);
 };
+
 export const deletar = async (url: string, header: Object) => {
   await api.delete(url, header);
 };
