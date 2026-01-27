@@ -1,4 +1,4 @@
-import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { cadastrarUsuario } from "../../services/Service";
 import type Usuario from "../../models/Usuario";
 import { useNavigate } from "react-router-dom";
@@ -17,16 +17,6 @@ function Cadastro() {
     senha: "",
     foto: "",
   });
-
-  useEffect(() => {
-    if (usuario.id !== 0) {
-      retornar();
-    }
-  }, [usuario]);
-
-  function retornar() {
-    navigate("/login");
-  }
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuario({
@@ -48,8 +38,11 @@ function Cadastro() {
       try {
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
         alert("Usuário cadastrado com sucesso!");
+        navigate("/login"); // redireciona direto para login
       } catch (error) {
         alert("Erro ao cadastrar o usuário!");
+      } finally {
+        setIsLoading(false);
       }
     } else {
       alert(
@@ -58,8 +51,6 @@ function Cadastro() {
       setUsuario({ ...usuario, senha: "" });
       setConfirmarSenha("");
     }
-
-    setIsLoading(false);
   }
 
   return (
@@ -142,7 +133,7 @@ function Cadastro() {
             <button
               type="reset"
               className="rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2"
-              onClick={retornar}
+              onClick={() => navigate("/login")}
             >
               Cancelar
             </button>
